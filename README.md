@@ -1,50 +1,63 @@
-# React + TypeScript + Vite
+<h2 align="center">
+  KerjAI - Client side<br/>
+</h2>
+<hr>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> part of Anak Soleh Team (Compfest 2024)
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [General Information](#general-information)
+- [Member List](#member-list)
+- [Technologies Used](#technologies-used)
+- [Setup](#setup)
+- [Usage](#usage)
+- [](#)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<a name="general-information"></a>
 
-## Expanding the ESLint configuration
+## General Information
+The system to be developed is a simulation and recommendation system for Indonesian students, specifically designed to be disability-friendly, with the aim of assisting individuals with disabilities in choosing their academic majors. The system will offer courses to simulate lectures related to specific majors. It will be capable of displaying top recommendations based on the user's personality, interests, and talents. Additionally, the system will provide an open discussion platform to connect students seeking information about a particular major with current students or professors in that field.  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<a name="member-list"></a>
 
-- Configure the top-level `parserOptions` property like this:
+## Member List
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+| Nama                  | Email                       |
+| --------------------- | --------------------------- |
+| Ilmagita Nariswari    | 18221101@std.stei.itb.ac.id |
+| Muhammad Rizky Sya'ban| 13521119@std.stei.itb.ac.id |
+| Mutawally Nawwar      | 13521166@std.stei.itb.ac.id |
+
+<a name="technologies-used"></a>
+
+## Technologies Used
+- react - version 18.3.3
+- vite - version 5.4.1
+- codesandbox API
+  
+<a name="setup"></a>
+
+## Setup
+You can setup your project by cloning this repository and install all the dependencies.
+
+```bash
+npm i
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<a name="usage"></a>
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Usage
+You can run the website on your local machine by using the command below.
+1. 
+```bash
+npm run dev
 ```
+
+<a name="contact"></a>
+## 
+<h4 align="center">
+  Created by @anak soleh<br/>
+  2024
+</h4>
+<hr>
