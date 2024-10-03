@@ -17,6 +17,11 @@ export async function analyzeResume(resume: File, jobTitle: string, jobDescripti
 }
 
 // Interview Analyzer
+export async function getInterviews() {
+  const res = await Axios.get(`/questions`);
+  return res.data.questions;
+}
+
 export async function getInterviewById(interviewId: string) {
   const res = await Axios.get(`/question/${interviewId}`);
   return res.data;

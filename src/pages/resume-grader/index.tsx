@@ -1,13 +1,14 @@
+import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import Navbar from "@/components/common/navbar";
-
+import BarChart from "@/components/chart/barChart";
 import { ResumeResult } from "@/types/resumeResult";
 import { analyzeResume } from "@/services/api";
-import BarChart from "@/components/chart/barChart";
+
 
 
 const ResumeGrader = () => {
@@ -19,6 +20,7 @@ const ResumeGrader = () => {
 
   const [result, setResult] = useState<ResumeResult | null>(null);
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const jobTitleParam = searchParams.get("jobTitle") || "";
@@ -41,6 +43,20 @@ const ResumeGrader = () => {
     }
   };
 
+  useEffect(() => {
+    const resumeResult = localStorage.getItem("resume-result");
+    if (resumeResult) {
+      setResult(JSON.parse(resumeResult));
+    }
+    
+    const resumeDetails = localStorage.getItem("resume-details");
+    if (resumeDetails) {
+      const { jobTitle, jobDescription } = JSON.parse(resumeDetails);
+      setJobTitle(jobTitle);
+      setJobDescription(jobDescription);
+    }
+  }, []);
+
   const handleSubmit = async () => {
     if (!pdfFile) {
       toast.error("Please upload a PDF file before submitting.");
@@ -53,8 +69,10 @@ const ResumeGrader = () => {
     setIsLoading(true);
     try {
       const resultTemp = await analyzeResume(pdfFile, jobTitle, jobDescription);
-      setResult(resultTemp);
-      console.log(resultTemp);
+      const resumeResult = JSON.stringify(resultTemp);
+      localStorage.setItem("resume-result", resumeResult);
+      localStorage.setItem("resume-details", JSON.stringify({ jobTitle, jobDescription }));
+      navigate(0);
     } catch (error) {
       console.log(error);
     } finally {
@@ -66,6 +84,7 @@ const ResumeGrader = () => {
     <>
       <Toaster />
       <Navbar isHome={false} />
+      <div className="h-[74px]" />
       <div className="flex flex-row w-full px-12 gap-12 py-12">
         <div className="h-full w-[40%] flex flex-col gap-8 ">
           <div className="font-bold text-4xl text-center  text-primary-blue">Analyze your resume!</div>
@@ -109,7 +128,7 @@ const ResumeGrader = () => {
             {isLoading ? (
               <div className="flex flex-row w-full justify-center items-center gap-2">
                 <Loader2 className="animate-spin" />
-                Loading...
+                Analyzing...
               </div>
             ) : (
               "Analyze"

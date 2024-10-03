@@ -7,9 +7,9 @@ const BarChart = ({ label, value, desc }: { label: string; value: number, desc:s
         </div>
         <div className="w-full flex flex-row gap-8">
           <div className="w-full flex flex-row items-center bg-primary-white rounded-full h-6">
-            <div className="bg-primary-blue h-6 rounded-full" style={{ width: `${value * 10}%` }} />
+            <div className="bg-primary-blue h-6 rounded-full" style={{ width: `${value > 10 ? value : value * 10}%` }} />
           </div>
-          <span className="font-bold text-primary-blue">{(value * 10).toFixed(1)}%</span>
+          <span className="font-bold text-primary-blue">{(value > 10 ? value : value * 10).toFixed(1)}%</span>
         </div>
       </div>
     );
