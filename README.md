@@ -3,7 +3,7 @@
 </h2>
 <hr>
 
-> part of Anak Soleh Team (Compfest 2024)
+> part of Anak Soleh Team (IFEST 2024)
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
