@@ -19,7 +19,7 @@ const Navbar = ({ isHome }: { isHome: boolean }) => {
   };
 
   return (
-    <div className={`relative flex flex-col w-full h-fit bg-navbar-color overflow-hidden`}>
+    <div className={`fixed flex flex-col w-full h-fit bg-navbar-color overflow-hidden`}>
       <div className={`absolute top-0 right-0 w-full h-full z-0`}>
         <img src={Glow1} alt="glow" className="absolute -left-72 -top-[400px] object-cover" />
         <img src={Glow2} alt="glow" className="absolute -top-[380px] -right-[520px] object-cover" />

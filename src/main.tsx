@@ -17,8 +17,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import Home from './pages/home'
 import AuthPage from './pages/auth'
 import ResumeGrader from './pages/resume-grader'
-import BehavioralInterviewPage from './pages/interview-analyzer/recorder/behavioral'
-import TechnicalInterviewPage from './pages/interview-analyzer/recorder/technical'
+import BehavioralInterviewPage from './pages/interview-analyzer/behavioral/recorder'
+import TechnicalInterviewPage from './pages/interview-analyzer/technical/recorder'
 
 const router = createBrowserRouter([
   {
