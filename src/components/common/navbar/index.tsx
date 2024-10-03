@@ -14,7 +14,7 @@ const Navbar = ({ isHome }: { isHome: boolean }) => {
     if (isAuthenticated) {
       navigate("/dashboard");
     } else {
-      navigate("/auth/signin");
+      navigate("/auth");
     }
   };
 
@@ -32,7 +32,7 @@ const Navbar = ({ isHome }: { isHome: boolean }) => {
       </div>
       <div className="relative z-10 flex flex-row items-center text-white py-5 px-64 gap-12 justify-between">
         <div onClick={() => navigate("/")} className="text-3xl font-semibold cursor-pointer">
-          AICe
+          KerjAI
         </div>
         {isAuthenticated ? (
           <>
@@ -43,7 +43,7 @@ const Navbar = ({ isHome }: { isHome: boolean }) => {
           </>
         ) : (
           <div className="flex flex-row">
-            <div onClick={() => navigate("/auth/signin")} className="flex p-2 px-4 cursor-pointer text-nowrap">
+            <div onClick={() => navigate("/auth")} className="flex p-2 px-4 cursor-pointer text-nowrap">
               Sign in
             </div>
             <div className="flex p-2 border-white border rounded-lg px-4 cursor-pointer text-nowrap">Sign Up</div>
