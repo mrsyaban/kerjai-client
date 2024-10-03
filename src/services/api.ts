@@ -35,6 +35,16 @@ export async function addInterview(question: string, interviewVideo: File) {
   return res.data.message;
 }
 
+export async function addTechnicalInterview(question: string, interviewVideo: File, code: string) {
+  const formData = new FormData();
+  formData.append("question", question);
+  formData.append("file", interviewVideo);
+  formData.append("code", code);
+  formData.append("category", "technical");
+  const res = await Axios.post(`/question`, formData);
+  return res.data.message;
+}
+
 export async function addInterviewById(questionId: string, interviewVideo: File) {
   const formData = new FormData();
   formData.append("id", questionId);

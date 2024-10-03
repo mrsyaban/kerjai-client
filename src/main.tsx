@@ -21,6 +21,7 @@ import BehavioralInterviewPage from "./pages/interview-analyzer/behavioral/recor
 import TechnicalInterviewPage from "./pages/interview-analyzer/technical/recorder";
 import Dashboard from "./pages/dashboard";
 import BehavioralInterviewResult from "./pages/interview-analyzer/behavioral/result";
+import TechnicalInterviewResult from "./pages/interview-analyzer/technical/result";
 
 const router = createBrowserRouter([
   {
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
               },
               {
                 path: "result",
-                element: <div>Result</div>,
+                element: <TechnicalInterviewResult/>,
               },
             ],
           },
