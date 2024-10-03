@@ -7,7 +7,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 import Navbar from "@/components/common/navbar";
 import { addTechnicalInterview} from "@/services/api";
 
-type Language = "python" | "cpp" | "javascript";
+type Language = "python" | "cpp" | "javascript" | "react";
 
 const languageConfigs: Record<Language, { extension: string, template: string }> = {
   python: {
@@ -21,6 +21,10 @@ const languageConfigs: Record<Language, { extension: string, template: string }>
   javascript: {
     extension: "js",
     template: "// Write your JavaScript code here\n\nfunction main() {\n    \n}\n\nmain();"
+  },
+  react: {
+    extension: "jsx",
+    template: `// Write your React code here\nimport React from "react";\n\nfunction App() {\n    return (\n        <div>\n            <h1>Hello, React!</h1>\n        </div>\n    );\n}\n\nexport default App;`
   }
 };
 
@@ -200,17 +204,18 @@ const TechnicalInterviewPage: React.FC = () => {
           />
           <div className="flex items-center gap-4">
             <Select value={language} onValueChange={(value: Language) => handleLanguageChange(value)}>
-              <SelectTrigger className="w-[180px] bg-white font-bold">
+              <SelectTrigger className="w-[180px] py-6 bg-white font-bold text-lg">
                 <SelectValue placeholder="Select Language" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="python">Python</SelectItem>
                 <SelectItem value="cpp">C++</SelectItem>
                 <SelectItem value="javascript">JavaScript</SelectItem>
+                <SelectItem value="react">React</SelectItem>
               </SelectContent>
             </Select>
             {!isRecording && (
-              <Button onClick={startInterview}>Start Interview</Button>
+              <Button onClick={startInterview} className="bg-primary-blue py-6 text-white text-lg">Start Interview</Button>
             )}
           </div>
           {isRecording && (
@@ -237,7 +242,7 @@ const TechnicalInterviewPage: React.FC = () => {
             </div>
           )}
           {isRecording && (
-            <Button onClick={stopInterview} className="mt-4 bg-button-color">
+            <Button onClick={stopInterview} className="mt-4 bg-button-color text-white text-lg py-6">
               Submit Interview
             </Button>
           )}
