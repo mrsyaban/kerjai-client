@@ -1,10 +1,53 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
+import "@fontsource/inter/100.css"
+import "@fontsource/inter/200.css"
+import "@fontsource/inter/300.css"
+import "@fontsource/inter/400.css"
+import "@fontsource/inter/500.css"
+import "@fontsource/inter/600.css"
+import "@fontsource/inter/700.css"
+import "@fontsource/inter/800.css"
+import "@fontsource/inter/900.css"
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-createRoot(document.getElementById('root')!).render(
+import Home from './pages/home'
+import AuthPage from './pages/auth'
+
+const router = createBrowserRouter([
+  {
+    path: "",
+    element: <Outlet />,
+    children: [
+      {
+        path: "",
+        element: <Home />
+      },
+      {
+        path: "auth",
+        element: <AuthPage/>
+      },
+      {
+        path: "*",
+        element: <div>Not Found</div>
+      }
+    ],
+    errorElement: <div>Error</div>
+  },
+]);
+
+const queryClient = new QueryClient();
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <GoogleOAuthProvider clientId={`${import.meta.env.VITE_CLIENT_ID}`}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}/>
+      </QueryClientProvider>
+    </GoogleOAuthProvider>
+  </StrictMode>
+);
+
