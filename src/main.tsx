@@ -16,6 +16,9 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import Home from './pages/home'
 import AuthPage from './pages/auth'
+import ResumeGrader from './pages/resume-grader'
+import BehavioralInterviewPage from './pages/interview-analyzer/recorder/behavioral'
+import TechnicalInterviewPage from './pages/interview-analyzer/recorder/technical'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +32,32 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <AuthPage/>
+      },
+      {
+        path: "resume-grader",
+        children: [
+          {
+            path: "",
+            element: <ResumeGrader/>
+          }
+        ],
+      },
+      {
+        path: "interview-analyzer",
+        children: [
+          {
+            path: "behavioral",
+            element: <BehavioralInterviewPage/>
+          },
+          {
+            path: "technical",
+            element: <TechnicalInterviewPage/>
+          },
+          {
+            path: "result",
+            element: <div>Result</div>
+          }
+        ]
       },
       {
         path: "*",
